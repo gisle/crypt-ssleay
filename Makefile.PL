@@ -54,4 +54,5 @@ WriteMakefile(
     VERSION => '0.01',
     LIBS    => ["-L$SSL_DIR/lib -lssl -lcrypto"],
     INC     => "-I$SSL_DIR/include",
+    dist    => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
 );
