@@ -29,7 +29,7 @@ sub connect
     my $self = shift;
     return unless $self->SUPER::connect(@_);
     my $ssl = Crypt::SSLeay::Conn->new(*$self->{'ssl_ctx'}, $self);
-    if ($ssl->connect < 0) {
+    if ($ssl->connect <= 0) {
 	# XXX should obtain the real SSLeay error message
 	$self->_error("SSL negotiation failed");
 	return;
