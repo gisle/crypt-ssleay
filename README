@@ -38,9 +38,15 @@ use integer constants but instead pass suitable strings as parameters
 to the API (where the C API use #define constants).  Currently, none
 of the supported methods have needed this.
 
+The currently supported classes are:
+
    Crypt::SSLeay::CTX
    Crypt::SSLeay::Conn
    Crypt::SSLeay::X509
+
+(The 'Conn' class is an invention of mine.  It represents an SSL
+connection.  The C API only use the 'SSL_' prefix for these
+functions.)
 
 
 Crypt::SSLeay::MainContext
