@@ -1,7 +1,9 @@
 package Crypt::SSLeay;
 
+# $Id$
+
 use strict;
-use vars qw($VERSION @ISA);
+use vars qw(@ISA $VERSION %CIPHERS);
 
 require DynaLoader;
 
@@ -22,7 +24,7 @@ use vars qw(%CIPHERS);
    'DES-CBC-SHA'  => "56 bit DES encryption with a SHA MAC",
    'DES-CBC3-MD5' => "192 bit EDE3 DES encryption with a MD5 MAC",
    'DES-CBC3-SHA' => "192 bit EDE3 DES encryption with a SHA MAC",
-   'DES-CFB-M1'   =>   "56 bit CFB64 DES encryption with a one byte MD5 MAC",
+   'DES-CFB-M1'   => "56 bit CFB64 DES encryption with a one byte MD5 MAC",
 );
 
 
