@@ -1,4 +1,14 @@
-!!! This is work in progress.  Class names and interfaces will change. !!!
+**********************************************************************
+***
+***  NOTE!! This SSLeay interface is already depreciated!!!!
+***
+***  Eric Young is currently implementing his own version of the
+***  SSLeay modules for Perl.  You should not really use this code,
+***  but instead wait for Eric's version.  When it appears
+***  Crypt-SSLeay will go away.
+***
+**********************************************************************
+
 
 
 Crypt::SSLeay
