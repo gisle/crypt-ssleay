@@ -30,6 +30,11 @@ void
 SSL_CTX_free(ctx)
      SSL_CTX* ctx
 
+int
+SSL_CTX_set_cipher_list(ctx, ciphers)
+     SSL_CTX* ctx
+     char* ciphers
+
 
 MODULE = SSL		PACKAGE = SSL::Conn	PREFIX = SSL_
 
@@ -93,7 +98,7 @@ SSL_write(ssl, buf, ...)
            }
 	   n = SSL_write(ssl, buf+offset, len);
 	   if (n >= 0) {
-	       RETVAL = sv_2mortal(newSViv(n));
+	       RETVAL = newSViv(n);
 	   } else {
 	       RETVAL = &sv_undef;
            }
@@ -141,10 +146,55 @@ SSL_read(ssl, buf, len,...)
 	   if (n >= 0) {
                SvCUR_set(sv, offset + n);
                buf[offset + n] = '\0';
-	       RETVAL = sv_2mortal(newSViv(n));
+	       RETVAL = newSViv(n);
 	   } else {
 	       RETVAL = &sv_undef;
            }
 
+	OUTPUT:
+	   RETVAL
+
+X509*
+SSL_get_peer_certificate(ssl)
+	SSL* ssl
+
+char*
+SSL_get_shared_ciphers(ssl)
+	SSL* ssl
+	PREINIT:
+	   char buf[512];
+	CODE:
+	   RETVAL = SSL_get_shared_ciphers(ssl, buf, sizeof(buf));
+	OUTPUT:
+	   RETVAL
+
+char*
+SSL_get_cipher(ssl)
+	SSL* ssl
+
+
+MODULE = SSL		PACKAGE = SSL::X509	PREFIX = X509_
+
+SV*
+subject_name(cert)
+	X509* cert
+	PREINIT:
+	   char* str;
+	CODE:
+	   str = X509_NAME_oneline(X509_get_subject_name(cert));
+	   RETVAL = newSVpv(str, 0);
+	   free(str);
+	OUTPUT:
+	   RETVAL
+
+SV*
+issuer_name(cert)
+	X509* cert
+	PREINIT:
+	   char* str;
+	CODE:
+	   str = X509_NAME_oneline(X509_get_issuer_name(cert));
+	   RETVAL = newSVpv(str, 0);
+	   free(str);
 	OUTPUT:
 	   RETVAL
