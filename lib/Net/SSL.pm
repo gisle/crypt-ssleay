@@ -13,8 +13,8 @@ require Crypt::SSLeay;
 
 sub _default_context
 {
-    require Crypt::SSLeay::Context;
-    Crypt::SSLeay::Context::ssl_ctx();
+    require Crypt::SSLeay::MainContext;
+    Crypt::SSLeay::MainContext::main_ctx();
 }
 
 sub configure
