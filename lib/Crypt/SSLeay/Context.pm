@@ -10,7 +10,9 @@ require Crypt::SSLeay::CTX;
 my $ctx = Crypt::SSLeay::CTX->new;
 $ctx->set_cipher_list($ENV{SSL_CIPHER}) if $ENV{SSL_CIPHER};
 
-my %sub_cache = (ssl_ctx => sub { $ctx });
+sub ssl_ctx { $ctx }
+
+my %sub_cache = ('ssl_ctx' => \&ssl_ctx );
 
 sub import
 {
