@@ -6,9 +6,14 @@ extern "C" {
 #include "XSUB.h"
 
 #include "ssl.h"
+#include "crypto.h"
 
 #ifdef __cplusplus
 }
+#endif
+
+#if SSLEAY_VERSION_NUMBER >= 0x0800
+#define SSLEAY8
 #endif
 
 
@@ -22,7 +27,12 @@ SSL_CTX*
 SSL_CTX_new(class)
      SV* class
      CODE:
+#ifdef SSLEAY8
+	RETVAL = SSL_CTX_new(SSLv2_client_method());
+	printf("CTX=%ld\n", RETVAL);
+#else
 	RETVAL = SSL_CTX_new();
+#endif
      OUTPUT:
 	RETVAL
 
@@ -181,7 +191,11 @@ subject_name(cert)
 	PREINIT:
 	   char* str;
 	CODE:
+#ifdef SSLEAY8
+	   str = X509_NAME_oneline(X509_get_subject_name(cert), NULL, 0);
+#else
 	   str = X509_NAME_oneline(X509_get_subject_name(cert));
+#endif
 	   RETVAL = newSVpv(str, 0);
 	   free(str);
 	OUTPUT:
@@ -193,7 +207,11 @@ issuer_name(cert)
 	PREINIT:
 	   char* str;
 	CODE:
+#ifdef SSLEAY8
+	   str = X509_NAME_oneline(X509_get_issuer_name(cert), NULL, 0);
+#else
 	   str = X509_NAME_oneline(X509_get_issuer_name(cert));
+#endif
 	   RETVAL = newSVpv(str, 0);
 	   free(str);
 	OUTPUT:
