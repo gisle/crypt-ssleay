@@ -1,3 +1,13 @@
+1998-01-13   Gisle Aas <aas@sn.no>
+
+   Release 0.06 and 0.05
+   
+   Fixed test script t/ssl_context.t
+   
+   SSL->connect can return 0.  Fixed bug in Net::SSL
+   
+
+
 1998-01-12   Gisle Aas <aas@sn.no>
 
    Release 0.04
