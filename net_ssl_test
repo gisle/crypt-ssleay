@@ -15,9 +15,11 @@ $cert = $sock->get_peer_certificate;
 
 print "THIS IS: ", $cert->subject_name, "\n";
 print "CERTIFIED BY: ", $cert->issuer_name, "\n";
+print "\n";
 
 $sock->print("$method / HTTP/1.0\n\n");
 
+$buf = '';
 while ($sock->read($buf, 1024)) {
    print $buf;
 }
