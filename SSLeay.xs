@@ -17,11 +17,11 @@ extern "C" {
 #endif
 
 
-MODULE = SSL		PACKAGE = SSL
+MODULE = Crypt::SSLeay		PACKAGE = Crypt::SSLeay
 
 PROTOTYPES: DISABLE
 
-MODULE = SSL		PACKAGE = SSL::CTX	PREFIX = SSL_CTX_
+MODULE = Crypt::SSLeay		PACKAGE = Crypt::SSLeay::CTX	PREFIX = SSL_CTX_
 
 SSL_CTX*
 SSL_CTX_new(class)
@@ -46,7 +46,7 @@ SSL_CTX_set_cipher_list(ctx, ciphers)
      char* ciphers
 
 
-MODULE = SSL		PACKAGE = SSL::Conn	PREFIX = SSL_
+MODULE = Crypt::SSLeay		PACKAGE = Crypt::SSLeay::Conn	PREFIX = SSL_
 
 SSL*
 SSL_new(class, ctx, ...)
@@ -183,7 +183,7 @@ SSL_get_cipher(ssl)
 	SSL* ssl
 
 
-MODULE = SSL		PACKAGE = SSL::X509	PREFIX = X509_
+MODULE = Crypt::SSLeay		PACKAGE = Crypt::SSLeay::X509	PREFIX = X509_
 
 SV*
 subject_name(cert)

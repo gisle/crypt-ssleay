@@ -1,0 +1,13 @@
+^blib/
+\.old$
+^Makefile$
+^MANIFEST.bak$
+^MANIFEST.SKIP$
+^pm_to_blib$
+^#
+/#
+~$
+\b(RCS|CVS)/[^/]+$
+\.cvsignore$
+^SSLeay\.[co]$
+\.bs$

@@ -1,0 +1,11 @@
+Changes
+MANIFEST
+Makefile.PL
+README
+SSLeay.pm
+SSLeay.xs
+lib/Crypt/SSLeay/CTX.pm
+lib/Crypt/SSLeay/Conn.pm
+lib/Crypt/SSLeay/X509.pm
+lib/Net/SSL.pm
+typemap

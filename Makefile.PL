@@ -50,7 +50,7 @@ warn "Apparently no SSLeay installation at '$SSL_DIR'\nAre you sure you got it c
     unless -f "$SSL_DIR/include/ssl.h";
 
 WriteMakefile(
-    NAME    => 'SSL',
+    NAME    => 'Crypt::SSLeay',
     VERSION => '0.01',
     LIBS    => ["-L$SSL_DIR/lib -lssl -lcrypto"],
     INC     => "-I$SSL_DIR/include",

@@ -1,4 +1,4 @@
-package SSL;
+package Crypt::SSLeay;
 
 use strict;
 use vars qw($VERSION @ISA);
@@ -8,7 +8,7 @@ require DynaLoader;
 @ISA = qw(DynaLoader);
 $VERSION = '0.01';
 
-bootstrap SSL $VERSION;
+bootstrap Crypt::SSLeay $VERSION;
 
 use vars qw(%CIPHERS);
 %CIPHERS = (
@@ -27,7 +27,7 @@ use vars qw(%CIPHERS);
 
 
 # A xsupp bug made this nessesary
-sub SSL::CTX::DESTROY  { shift->free; }
-sub SSL::Conn::DESTROY { shift->free; }
+sub Crypt::SSL::CTX::DESTROY  { shift->free; }
+sub Crypt::SSL::Conn::DESTROY { shift->free; }
 
 1;

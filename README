@@ -1,0 +1,16 @@
+
+Crypt::SSL
+  - XS
+  - Version
+
+Crypt::SSLeay::Conn (???)
+Crypt::SSLeay::CTX
+Crypt::SSLeay::X509
+
+Crypt::SSLeay::Context
+  - manintains a single context
+  - ciphers from environment, etc
+
+
+Net::SSL  (IO::Socket::INET subclass)
+  - adm by Crypt::SSLeay::Context
