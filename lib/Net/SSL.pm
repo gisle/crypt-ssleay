@@ -1,5 +1,7 @@
 package Net::SSL;
 
+# $Id$
+
 use strict;
 use vars qw(@ISA $VERSION);
 $VERSION = sprintf("%d.%02d", q$Revision$ =~ /(\d+)\.(\d+)/);
