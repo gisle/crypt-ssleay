@@ -1,0 +1,26 @@
+SSL_CTX*       T_CTXOBJ
+SSL*	       T_SSLOBJ
+
+INPUT
+T_CTXOBJ
+        if (sv_derived_from($arg, \"SSL::CTX\")) {
+            IV tmp = SvIV((SV*)SvRV($arg));
+            $var = ($type) tmp;
+        }
+        else
+            croak(\"$var is not a SSL::CTX\")
+
+T_SSLOBJ
+        if (sv_derived_from($arg, \"SSL::Conn\")) {
+            IV tmp = SvIV((SV*)SvRV($arg));
+            $var = ($type) tmp;
+        }
+        else
+            croak(\"$var is not a SSL::Conn\")
+
+OUTPUT
+T_CTXOBJ
+        sv_setref_pv($arg, \"SSL::CTX\", (void*)$var);
+
+T_SSLOBJ
+        sv_setref_pv($arg, \"SSL::Conn\", (void*)$var);
