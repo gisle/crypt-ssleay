@@ -51,7 +51,7 @@ warn "Apparently no SSLeay installation at '$SSL_DIR'\nAre you sure you got it c
 
 WriteMakefile(
     NAME    => 'Crypt::SSLeay',
-    VERSION => '0.01',
+    VERSION_FROM => 'SSLeay.pm',
     LIBS    => ["-L$SSL_DIR/lib -lssl -lcrypto"],
     INC     => "-I$SSL_DIR/include",
     dist    => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
