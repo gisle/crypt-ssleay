@@ -1,5 +1,6 @@
 SSL_CTX*       T_CTXOBJ
 SSL*	       T_SSLOBJ
+X509*	       T_X509OBJ
 
 INPUT
 T_CTXOBJ
@@ -8,7 +9,7 @@ T_CTXOBJ
             $var = ($type) tmp;
         }
         else
-            croak(\"$var is not a SSL::CTX\")
+            croak(\"$var is not an SSL::CTX\")
 
 T_SSLOBJ
         if (sv_derived_from($arg, \"SSL::Conn\")) {
@@ -16,7 +17,15 @@ T_SSLOBJ
             $var = ($type) tmp;
         }
         else
-            croak(\"$var is not a SSL::Conn\")
+            croak(\"$var is not an SSL::Conn\")
+
+T_X509OBJ
+        if (sv_derived_from($arg, \"SSL::X509\")) {
+            IV tmp = SvIV((SV*)SvRV($arg));
+            $var = ($type) tmp;
+        }
+        else
+            croak(\"$var is not an SSL::X509\")
 
 OUTPUT
 T_CTXOBJ
@@ -24,3 +33,6 @@ T_CTXOBJ
 
 T_SSLOBJ
         sv_setref_pv($arg, \"SSL::Conn\", (void*)$var);
+
+T_X509OBJ
+        sv_setref_pv($arg, \"SSL::X509\", (void*)$var);
